@@ -1,0 +1,11 @@
+# Archivos de Visual Studio
+.vs/
+*.user
+*.suo
+
+# Archivos binarios y obj
+bin/
+obj/
+
+# Librerías cliente descargadas
+wwwroot/lib/
