@@ -63,7 +63,7 @@ namespace Store.Controllers
 
         public async Task<IActionResult> Delete(int id)
         {
-            var item = await dbContext.Productos.FindAsync(i => i.IdProduct == id);
+            var item = await dbContext.Productos.FindAsync(id);
             dbContext.Productos.Remove(item);
             await dbContext.SaveChangesAsync();
             return StatusCode(StatusCodes.Status200OK, item);
