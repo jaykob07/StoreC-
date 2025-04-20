@@ -1,0 +1,30 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio files
+.vs/
+.vscode/
+
+# .NET stuff
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Others
+*.log
+*.tmp
+
+# Libs from libman or npm
+wwwroot/lib/
+node_modules/
+
+# Ignore secrets
+secrets.json
+appsettings.Development.json
