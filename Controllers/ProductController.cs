@@ -42,7 +42,7 @@ namespace Store.Controllers
         {
             await dbContext.Productos.AddAsync(objeto);
             await dbContext.SaveChangesAsync();
-            return StatusCode(StatusCodes.Status201Created, new {mensaje = "ok"});
+            return CreatedAtAction(nameof(GetProduct), new { id = objeto.IdProduct }, objeto);
 
         }
 
@@ -57,18 +57,33 @@ namespace Store.Controllers
 
         }
 
-
-        [HttpGet]
-        [Route("eliminar/{id:int}")]
-
+        [HttpDelete("eliminar/{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var item = await dbContext.Productos.FindAsync(id);
-            dbContext.Productos.Remove(item);
-            await dbContext.SaveChangesAsync();
-            return StatusCode(StatusCodes.Status200OK, item);
-        }
+            // Buscar el producto incluyendo una verificación de nulidad
+            var producto = await dbContext.Productos.FindAsync(id);
 
+            if (producto == null)
+            {
+                return NotFound($"No se encontró el producto con ID {id}");
+            }
+
+            try
+            {
+                dbContext.Productos.Remove(producto);
+                await dbContext.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    Mensaje = "Producto eliminado correctamente",
+                    ProductoEliminado = new { producto.IdProduct, producto.Name }
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al eliminar: {ex.Message}");
+            }
+        }
 
 
 

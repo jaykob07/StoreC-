@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DbkaContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CadenaSQL")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("CadenaSQL")));
 
 // codigo para probar conexion a la base de datos
 var connectionString = builder.Configuration.GetConnectionString("CadenaSQL");

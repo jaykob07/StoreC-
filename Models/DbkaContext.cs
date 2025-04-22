@@ -26,17 +26,18 @@ public partial class DbkaContext : DbContext
     {
         modelBuilder.Entity<Producto>(entity =>
         {
-            entity.HasKey(e => e.IdProduct).HasName("PK__Producto__2E8946D43B05F6F5");
+            entity.HasKey(e => e.IdProduct).HasName("PK_Producto"); // Nombre más simple
 
             entity.ToTable("Producto");
 
             entity.Property(e => e.Description)
-                .HasMaxLength(500)
-                .IsUnicode(false);
+                .HasMaxLength(500);
+
             entity.Property(e => e.Name)
-                .HasMaxLength(200)
-                .IsUnicode(false);
-            entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
+                .HasMaxLength(200);
+
+            entity.Property(e => e.Price)
+                .HasColumnType("numeric(10,2)"); // Tipo específico para PostgreSQL
         });
 
         OnModelCreatingPartial(modelBuilder);
