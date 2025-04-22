@@ -31,7 +31,10 @@ Este proyecto es una aplicación web **CRUD (Crear, Leer, Actualizar, Eliminar)*
 ### 🖥️ 1. Clonar el Repositorio
 
 ```consola
-git clone https://github.com/jaykob07/StoreC-/.git
+git clone https://github.com/jaykob07/StoreC-.git
+cd nombre_del_repositorio
+## si estas en la consola y tienes vs studio 2022
+dovenv nombre_del_repositorio    
 
 
 
